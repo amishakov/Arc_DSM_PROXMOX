@@ -11,7 +11,7 @@ bash -c "$(wget -qLO - https://github.com/amishakov/Arc_DSM_PROXMOX/raw/main/ins
 or
 
 bash -c "$(wget -qLO - https://github.com/amishakov/Arc_DSM_PROXMOX/raw/main/pve-dsm.sh)"
+
+bash -c "$(wget -qLO - https://github.com/amishakov/Arc_DSM_PROXMOX/raw/main/dsm.sh)"
                       
 </br></br>
-
-CREDITS: https://kingtam.eu.org/posts/pve-dsm/  (Original script created for Arpl loader for DSM)
