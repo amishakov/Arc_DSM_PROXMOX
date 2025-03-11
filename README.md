@@ -7,6 +7,10 @@ This Script looks for the last version of Arc Bootloader for DSM 7.1+ and create
 **To Install from Proxmox shell, copy and paste line bellow.**
 
 bash -c "$(wget -qLO - https://github.com/amishakov/Arc_DSM_PROXMOX/raw/main/install_arc_dsm.sh)"
+
+or
+
+bash -c "$(wget -qLO - https://github.com/amishakov/Arc_DSM_PROXMOX/raw/main/pve-dsm.sh)"
                       
 </br></br>
 
