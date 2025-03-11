@@ -54,8 +54,8 @@ qm create "$VMID" --name DSM --memory 4096 --sockets 1 --cores 2 --cpu host --ne
 
 # Import arpl image as boot disk
 image="/var/lib/vz/template/iso/arpl.img"
-qm importdisk "$VMID" "$image" local-lvm
-qm set "$VMID" -sata0 local-lvm:vm-$VMID-disk-0
+qm importdisk "$VMID" "$image" local
+qm set "$VMID" -sata0 local:vm-$VMID-disk-0
 qm set "$VMID" --boot c --bootdisk sata0
 
 # Add a new SATA disk to the virtual machine
