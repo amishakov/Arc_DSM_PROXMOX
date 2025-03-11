@@ -40,7 +40,7 @@ version=$(curl -s https://api.github.com/repos/AuxXxilium/arc/releases/latest | 
 newversion=${version:1}
  
 # Construct download URL using latest release version
-url="https://github.com/AuxXxilium/arc/releases/download/$version/arc-$version-minimal.img.zip"
+url="https://github.com/AuxXxilium/arc/releases/download/$version/arc-$version-evo.img.zip"
 
 # Download and extract Arc image
 wget $url
