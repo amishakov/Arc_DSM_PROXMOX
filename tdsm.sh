@@ -28,21 +28,10 @@ then
             ;;
     esac
 fi
-
-# Check if unzip is installed, install if not
-if ! command -v unzip &> /dev/null; then
-    echo "unzip could not be found, installing..."
-    apt install unzip -y
-fi
-
-# Get latest release version from GitHub API
-version=$(curl -s https://api.github.com/repos/IceWhaleTech/ZimaOS/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
-newversion=${version:1}
  
 # Construct download URL using latest release version
-url="https://github.com/IceWhaleTech/ZimaOS/releases/download/$version/zimaos_zimacube-$version.img.xz"
-unzip "zimaos_zimacube-$version.img.xz" -d $image_folder
-rm "zimaos_zimacube-$version.img.xz"
+url="https://github.com/IceWhaleTech/ZimaOS/releases/download/1.3.3-beta1/zimaos_zimacube-1.3.3-beta1_installer.img"
+mv zimaos_zimacube-1.3.3-beta1_installer.img $image_folder
 
 # Download and extract Arc image
 wget $url
@@ -55,13 +44,13 @@ qm create "$VMID" \
  --sockets 1 \
  --cores 2 \
  --cpu host \
- --net0 e1000=00:11:32:FE:A9:F1,bridge=vmbr0 \
+ --net0 e1000,bridge=vmbr0 \
  --ostype l26 \
  --bios seabios \
  --boot order=sata0
 
 # Import Arc image as boot disk
-image="/var/lib/vz/template/iso/zimaos_zimacube-$version.img.xz"
+image="/var/lib/vz/template/iso/zimaos_zimacube-1.3.3-beta1_installer.img"
 qm importdisk "$VMID" "$image" local --format raw
 qm set $VMID --sata0 local:$VMID/vm-$VMID-disk-0.raw
 
