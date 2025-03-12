@@ -36,17 +36,15 @@ if ! command -v unzip &> /dev/null; then
 fi
 
 # Get latest release version from GitHub API
-version=$(curl -s https://api.github.com/repos/AuxXxilium/arc/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
+version=$(curl -s https://api.github.com/repos/IceWhaleTech/ZimaOS/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
 newversion=${version:1}
  
-# Construct download URL using latest release version
-url="https://github.com/AuxXxilium/arc/releases/download/$version/arc-$version-evo.vmdk-dyn.zip"
+# Construct download URL using latest release version zimaos_zimacube-1.3.2_installer.img
+url="https://github.com/IceWhaleTech/ZimaOS/releases/download/$version/zimaos_zimacube-$version_installer.img"
 
 # Download and extract Arc image
 wget $url
 image_folder="/var/lib/vz/template/iso/"
-unzip "arc-$version-evo.vmdk-dyn.zip" -d $image_folder
-rm "arc-$version-evo.vmdk-dyn.zip"
 
 # Create virtual machine
 qm create "$VMID" \
@@ -58,12 +56,12 @@ qm create "$VMID" \
  --net0 e1000=00:11:32:FE:A9:F1,bridge=vmbr0 \
  --ostype l26 \
  --bios seabios \
- --boot order=scsi0
+ --boot order=sata0
 
 # Import Arc image as boot disk
-image="/var/lib/vz/template/iso/arc-dyn.vmdk"
+image="/var/lib/vz/template/iso/zimaos_zimacube-$version_installer.img"
 qm importdisk "$VMID" "$image" local --format raw
-qm set $VMID --scsi0 local:$VMID/vm-$VMID-disk-0.raw
+qm set $VMID --sata0 local:$VMID/vm-$VMID-disk-0.raw
 
 # Start the virtual machine
 # qm start "$VMID"
