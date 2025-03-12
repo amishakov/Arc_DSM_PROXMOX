@@ -31,7 +31,7 @@ fi
 
 # Download and extract Arc image
 wget https://github.com/IceWhaleTech/ZimaOS/releases/download/1.3.3-beta1/zimaos_zimacube-1.3.3-beta1_installer.img
-mv zimaos_zimacube-1.3.3-beta1_installer.img /var/lib/vz/template/iso/
+cp zimaos_zimacube-1.3.3-beta1_installer.img /var/lib/vz/template/iso/
 
 # Create virtual machine
 qm create "$VMID" \
