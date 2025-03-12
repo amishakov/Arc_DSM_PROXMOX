@@ -30,10 +30,10 @@ then
 fi
 
 # Download and extract Arc image
-wget https://github.com/IceWhaleTech/ZimaOS/releases/download/1.3.3-beta1/zimaos_zimacube-1.3.3-beta1.img.xz
-unxz zimaos_zimacube-1.3.3-beta1.img.xz
-cp zimaos_zimacube-1.3.3-beta1.img /var/lib/vz/template/iso/
-rm zimaos_zimacube-1.3.3-beta1.img
+wget https://download.umbrel.com/release/1.4.0/umbrelos-amd64.img.xz
+unxz umbrelos-amd64.img.xz
+cp umbrelos-amd64.img /var/lib/vz/template/iso/
+rm umbrelos-amd64.img
 
 # Create virtual machine
 qm create "$VMID" \
@@ -48,7 +48,7 @@ qm create "$VMID" \
  --boot order=sata0
 
 # Import Arc image as boot disk
-image="/var/lib/vz/template/iso/zimaos_zimacube-1.3.3-beta1.img"
+image="/var/lib/vz/template/iso/umbrelos-amd64.img"
 qm importdisk "$VMID" "$image" local --format raw
 qm set $VMID --sata0 local:$VMID/vm-$VMID-disk-0.raw
 
