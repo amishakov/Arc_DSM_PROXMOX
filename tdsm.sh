@@ -30,8 +30,11 @@ then
 fi
 
 # Download and extract Arc image
-wget https://github.com/IceWhaleTech/ZimaOS/releases/download/1.3.3-beta1/zimaos_zimacube-1.3.3-beta1_installer.img
-cp zimaos_zimacube-1.3.3-beta1_installer.img /var/lib/vz/template/iso/
+wget https://github.com/IceWhaleTech/ZimaOS/releases/download/1.3.3-beta1/zimaos_zimacube-1.3.3-beta1.img.xz
+unxz zimaos_zimacube-1.3.3-beta1.img.xz
+rm zimaos_zimacube-1.3.3-beta1.img.xz
+cp zimaos_zimacube-1.3.3-beta1.img /var/lib/vz/template/iso/
+rm zimaos_zimacube-1.3.3-beta1.img
 
 # Create virtual machine
 qm create "$VMID" \
@@ -46,7 +49,7 @@ qm create "$VMID" \
  --boot order=sata0
 
 # Import Arc image as boot disk
-image="/var/lib/vz/template/iso/zimaos_zimacube-1.3.3-beta1_installer.img"
+image="/var/lib/vz/template/iso/zimaos_zimacube-1.3.3-beta1.img"
 qm importdisk "$VMID" "$image" local --format raw
 qm set $VMID --sata0 local:$VMID/vm-$VMID-disk-0.raw
 
