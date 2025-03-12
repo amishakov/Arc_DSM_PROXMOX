@@ -49,7 +49,7 @@ unzip "arc-$version-evo.vmdk-dyn.zip" -d $image_folder
 rm "arc-$version-evo.vmdk-dyn.zip"
 
 # Create virtual machine
-qm create "$VMID" --name DSM7 --memory 4096 --sockets 1 --cores 2 --cpu host --net0 e1000=00:11:32:FE:A9:F1,bridge=vmbr0,firewall=1 --ostype l26 --bios seabios --boot order=sata0
+qm create "$VMID" --name DSM7 --memory 4096 --sockets 1 --cores 2 --cpu host --net0 e1000=00:11:32:FE:A9:F1,bridge=vmbr0 --ostype l26 --bios seabios --boot order=sata0
 
 # Import Arc image as boot disk
 image="/var/lib/vz/template/iso/arc-dyn.vmdk"
