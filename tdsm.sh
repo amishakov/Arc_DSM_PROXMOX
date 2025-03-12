@@ -40,7 +40,7 @@ version=$(curl -s https://api.github.com/repos/IceWhaleTech/ZimaOS/releases/late
 newversion=${version:1}
  
 # Construct download URL using latest release version zimaos_zimacube-1.3.2_installer.img
-url="https://github.com/IceWhaleTech/ZimaOS/releases/download/$version/zimaos_zimacube-$version_installer.img"
+url="https://github.com/IceWhaleTech/ZimaOS/releases/download/$version/zimaos_zimacube-"$version"_installer.img"
 
 # Download and extract Arc image
 wget $url
@@ -59,7 +59,7 @@ qm create "$VMID" \
  --boot order=sata0
 
 # Import Arc image as boot disk
-image="/var/lib/vz/template/iso/zimaos_zimacube-$version_installer.img"
+image="/var/lib/vz/template/iso/zimaos_zimacube-"$version"_installer.img"
 qm importdisk "$VMID" "$image" local --format raw
 qm set $VMID --sata0 local:$VMID/vm-$VMID-disk-0.raw
 
