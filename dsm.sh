@@ -30,30 +30,25 @@ then
 fi
 
 # Check if unzip is installed, install if not
-echo "-- Check if unzip is installed, install if not"
 if ! command -v unzip &> /dev/null; then
     echo "unzip could not be found, installing..."
     apt install unzip -y
 fi
 
 # Get latest release version from GitHub API
-echo "-- Get latest release version from GitHub API"
 version=$(curl -s https://api.github.com/repos/AuxXxilium/arc/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
 newversion=${version:1}
  
 # Construct download URL using latest release version
-echo "-- Construct download URL using latest release version"
 url="https://github.com/AuxXxilium/arc/releases/download/$version/arc-$version-evo.vmdk-dyn.zip"
 
 # Download and extract Arc image
-echo "-- Download and extract Arc image"
 wget $url
 image_folder="/var/lib/vz/template/iso/"
 unzip "arc-$version-evo.vmdk-dyn.zip" -d $image_folder
 rm "arc-$version-evo.vmdk-dyn.zip"
 
 # Create virtual machine
-echo "-- Create virtual machine"
 qm create "$VMID" \
  --name DSM7 \
  --memory 4096 \
@@ -66,7 +61,6 @@ qm create "$VMID" \
  --boot order=sata0
 
 # Import Arc image as boot disk
-echo "-- Import Arc image as boot disk"
 image="/var/lib/vz/template/iso/arc-dyn.vmdk"
 qm importdisk "$VMID" "$image" local --format raw
 qm set $VMID --sata0 local:$VMID/vm-$VMID-disk-0.raw
