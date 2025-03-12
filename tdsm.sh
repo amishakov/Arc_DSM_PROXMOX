@@ -40,7 +40,7 @@ qm create "$VMID" \
  --name DSM7 \
  --memory 4096 \
  --sockets 1 \
- --cores 2 \
+ --cores 4 \
  --cpu host \
  --net0 e1000,bridge=vmbr0 \
  --ostype l26 \
