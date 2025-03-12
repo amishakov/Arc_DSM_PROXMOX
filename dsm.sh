@@ -54,7 +54,7 @@ qm create "$VMID" --name DSM7 --memory 4096 --sockets 1 --cores 2 --cpu host --n
 # Import Arc image as boot disk
 image="/var/lib/vz/template/iso/arc-dyn.vmdk"
 qm importdisk "$VMID" "$image" local --format qcow2
-qm set $VMID --sata0 local:vm-$VMID-disk-0.qcow2
+qm set $VMID --sata0 local:$VMID/vm-$VMID-disk-0.qcow2
 # qm set $VMID --boot order=sata0
 
 # Add a new SATA disk to the virtual machine
