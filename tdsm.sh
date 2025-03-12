@@ -32,7 +32,6 @@ fi
 # Download and extract Arc image
 wget https://github.com/IceWhaleTech/ZimaOS/releases/download/1.3.3-beta1/zimaos_zimacube-1.3.3-beta1.img.xz
 unxz zimaos_zimacube-1.3.3-beta1.img.xz
-rm zimaos_zimacube-1.3.3-beta1.img.xz
 cp zimaos_zimacube-1.3.3-beta1.img /var/lib/vz/template/iso/
 rm zimaos_zimacube-1.3.3-beta1.img
 
