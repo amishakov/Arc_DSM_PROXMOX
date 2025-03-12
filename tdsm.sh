@@ -28,13 +28,10 @@ then
             ;;
     esac
 fi
- 
-# Construct download URL using latest release version
-url="https://github.com/IceWhaleTech/ZimaOS/releases/download/1.3.3-beta1/zimaos_zimacube-1.3.3-beta1_installer.img"
-mv zimaos_zimacube-1.3.3-beta1_installer.img $image_folder
 
 # Download and extract Arc image
-wget $url
+wget https://github.com/IceWhaleTech/ZimaOS/releases/download/1.3.3-beta1/zimaos_zimacube-1.3.3-beta1_installer.img
+mv zimaos_zimacube-1.3.3-beta1_installer.img $image_folder
 image_folder="/var/lib/vz/template/iso/"
 
 # Create virtual machine
