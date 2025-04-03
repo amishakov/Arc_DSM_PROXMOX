@@ -40,13 +40,13 @@ version=$(curl -s https://api.github.com/repos/AuxXxilium/arc/releases/latest | 
 newversion=${version:1}
  
 # Construct download URL using latest release version
-url="https://github.com/AuxXxilium/arc/releases/download/$version/arc-$version-evo.vmdk-dyn.zip"
+url="https://github.com/AuxXxilium/arc/releases/download/$version/arc-$version.vmdk-dyn.zip"
 
 # Download and extract Arc image
 wget $url
 image_folder="/var/lib/vz/template/iso/"
-unzip "arc-$version-evo.vmdk-dyn.zip" -d $image_folder
-rm "arc-$version-evo.vmdk-dyn.zip"
+unzip "arc-$version.vmdk-dyn.zip" -d $image_folder
+rm "arc-$version.vmdk-dyn.zip"
 
 # Create virtual machine
 qm create "$VMID" \
