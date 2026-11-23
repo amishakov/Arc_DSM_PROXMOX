@@ -36,24 +36,24 @@ if ! command -v unzip &> /dev/null; then
 fi
 
 # Get latest release version from GitHub API
-version=$(curl -s https://api.github.com/repos/fbelavenuto/arpl/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
+version=$(curl -s https://api.github.com/repos/RROrg/rr/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
 newversion=${version:1}
 
 # Construct download URL using latest release version
-url="https://github.com/fbelavenuto/arpl/releases/download/$version/arpl-$newversion.img.zip"
+url="https://github.com/RROrg/rr/releases/download/$version/rr-$newversion.img.zip"
 
-# Download and extract arpl image
+# Download and extract rr image
 wget $url
 image_folder="/var/lib/vz/template/iso/"
-unzip "arpl-$newversion.img.zip" -d $image_folder
-rm "arpl-$newversion.img.zip"
+unzip "rr-$newversion.img.zip" -d $image_folder
+rm "rr-$newversion.img.zip"
 
 
 # Create virtual machine
 qm create "$VMID" --name DSM --memory 4096 --sockets 1 --cores 2 --cpu host --net0 virtio,bridge=vmbr0 --ostype l26
 
-# Import arpl image as boot disk
-image="/var/lib/vz/template/iso/arpl.img"
+# Import rr image as boot disk
+image="/var/lib/vz/template/iso/rr.img"
 qm importdisk "$VMID" "$image" local
 qm set "$VMID" -sata0 local:vm-$VMID-disk-0
 qm set "$VMID" --boot c --bootdisk sata0
