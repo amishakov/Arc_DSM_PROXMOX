@@ -40,13 +40,13 @@ version=$(curl -s https://api.github.com/repos/RROrg/rr/releases/latest | grep -
 newversion=${version:1}
 
 # Construct download URL using latest release version
-url="https://github.com/RROrg/rr/releases/download/$version/rr-$newversion.img.zip"
+url="https://github.com/RROrg/rr/releases/download/$version/rr-$version.img.zip"
 
 # Download and extract rr image
 wget $url
 image_folder="/var/lib/vz/template/iso/"
-unzip "rr-$newversion.img.zip" -d $image_folder
-rm "rr-$newversion.img.zip"
+unzip "rr-$version.img.zip" -d $image_folder
+rm "rr-$version.img.zip"
 
 
 # Create virtual machine
