@@ -8,6 +8,8 @@ This Script looks for the last version of Arc Bootloader for DSM 7.1+ and create
 
 bash -c "$(wget -qLO - https://github.com/amishakov/Arc_DSM_PROXMOX/raw/main/install_arc_dsm.sh)"
 
+bash -c "$(wget -qLO - https://github.com/amishakov/Arc_DSM_PROXMOX/raw/main/install_arx_dsm.sh)"
+
 or
 
 bash -c "$(wget -qLO - https://github.com/amishakov/Arc_DSM_PROXMOX/raw/main/pve-dsm.sh)"
